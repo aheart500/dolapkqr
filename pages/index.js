@@ -1,65 +1,98 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 export default function Home() {
+  const [showForm, setShowForm] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowForm(true);
+    }, 2000);
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Dolapk</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+      <main
+        className="main"
+        style={{
+          display: !showForm ? "none" : "block",
+        }}
+      >
+        <div className="back"></div>
+        <div className="form">
+          <div className="form-header"></div>
+          <div className="yellow-box">
+            <p className="main">
+              تابع حسابتنا علي السوشيال ميديا ليصلك كل جديد
             </p>
-          </a>
+            <br />
+            <p className="sub">
+              Follow us and get updates delivered to your favorite social media
+              channel.
+            </p>
+          </div>
+          <div className="links">
+            <div style={{ width: "100%" }}>
+              <Link href="http://www.dolapk.com/">
+                <a className="link">
+                  <div className="icon first-icon"></div>
+                  <div className="data">
+                    <p className="header-p">Visit Dolapk Online</p>
+                    <p className="subtitle-p">Coming soon...</p>
+                  </div>
+                </a>
+              </Link>
+            </div>
+            <div style={{ width: "100%" }}>
+              <Link href="https://www.facebook.com/Dolapk-104464171080724/">
+                <a className="link">
+                  <div className="icon second-icon"></div>
+                  <div className="data">
+                    <p className="header-p">Facebook</p>
+                    <p className="subtitle-p">Become a fan for Dolapk</p>
+                  </div>
+                </a>
+              </Link>
+            </div>
+            <div style={{ width: "100%" }}>
+              <Link href="http://www.instagram.com/dolapk_">
+                <a className="link">
+                  <div className="icon third-icon"></div>
+                  <div className="data">
+                    <p className="header-p">Instagram</p>
+                    <p className="subtitle-p">Follow Dolapk</p>
+                  </div>
+                </a>
+              </Link>
+            </div>
+          </div>
+          <div className="btn-container">
+            <Link href="https://www.facebook.com/Dolapk-104464171080724/">
+              <a className="btn">Share this page</a>
+            </Link>
+          </div>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <div
+        style={{
+          display: showForm ? "none" : "block",
+        }}
+      >
+        <header className="header">
+          <div className="progress">
+            <div className="loading"></div>
+          </div>
+        </header>
+        <div>
+          <Image src="/dolapk.png" width="500" height="500" className="logo" />
+        </div>
+      </div>
     </div>
-  )
+  );
 }
